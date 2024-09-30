@@ -85,7 +85,7 @@ var chemicals =[
         "Quantity": "8749.54"
     }
 ]
-var i;
+var i=0;
 var arrSelectId=[];
 // function tableData(chemicals){
 // // var tr=document.createElement("tr");
@@ -211,21 +211,27 @@ function saveNewRow(newChemical1) {
 
 }
 
-function moveRowUp(rowIndex) {
+function moveRowUp() {
     const table = document.getElementById('chemicalTable');
-    if (rowIndex > 1) {
-        const row = table.rows[rowIndex];
-        table.tBodies[0].insertBefore(row, table.rows[rowIndex - 1]);
+    // console.log(i);
+    // console.log(table.rows[1]);
+
+    if (i > 1) {
+        const row = table.rows[i];
+        table.tBodies[0].insertBefore(row, table.rows[i - 1]);
     }
 }
 window.onload = function() {
-    renderTable(chemicals);
+    renderTable(chemicals);     
 };
-function moveRowDown(rowIndex) {
+function moveRowDown() {
     const table = document.getElementById('chemicalTable');
-    if (rowIndex < table.rows.length - 1) {
-        const row = table.rows[rowIndex];
-        table.tBodies[0].insertBefore(table.rows[rowIndex + 1], row);
+    console.log(i);
+    if (i < table.rows.length - 1) {
+        const row = table.rows[i];
+        // console.log(table.rows[1]);
+        table.tBodies[0].insertBefore(row,table.rows[i + 1]);
+      
     }
 }
 let sortDirection = false;
@@ -281,6 +287,7 @@ function selectForDelete(event){
         navbar.style.color= "rgb(221, 221, 221)";
     arrSelectId.splice(arrSelectId.indexOf(id), 1);
     document.getElementById("icon1").style.display="none";
+    i=0;
    }
    console.log(arrSelectId.toString());
 }
