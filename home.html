@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Table</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- <div class="toolbar">
+        <button onclick="addRow()">Add Row</button>
+        <button onclick="deleteRow()">Delete Row</button>
+        <button onclick="moveRowUp(5)">Move Up</button>
+        <button onclick="moveRowDown(2)">Move Down</button>
+        <button onclick="refreshTable()">Refresh</button>
+        <button onclick="saveTable()">Save</button>
+    </div> -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-title">Chemical Supplies</div>
+            <div class="navbar-buttons">
+                <i id="icon" onclick="addRow()" class="fa-solid fa-circle-plus"></i>
+                <i id="icon" onclick="moveRowUp()" class="fa-solid fa-arrow-up"></i>
+                <i id="icon" onclick="moveRowDown()" class="fa-solid fa-arrow-down"></i>
+                <i  id="icon"  style=" color: red; " onclick="deleteRow()" class="fa-solid fa-trash"></i>
+                <i id="icon" onclick="renderTable()" class="fa-sharp fa-solid fa-rotate-left"></i>
+                <i id="icon" onclick="addNewRow()" class="fa-regular fa-floppy-disk"></i>
+                <i id="icon1" onclick="openPopup()" style="display: none;color: blue;cursor:pointer; " class="fa-regular fa-pen-to-square"></i>
+            </div>
+        </div>
+    </header>
+    <table id="chemicalTable">
+        <thead>
+            <tr>
+                <th><i class="fa-solid fa-check"></i></th>
+                <th onclick="sortTable(0)">ID</th>
+                <th onclick="sortTable(1)">Chemical Name</th>
+                <th onclick="sortTable(2)">Vendor</th>
+                <th onclick="sortTable(3)">Density</th>
+                <th onclick="sortTable(4)">Viscosity</th>
+                <th onclick="sortTable(5)">Packaging</th>
+                <th onclick="sortTable(6)">Pack Size</th>
+                <th onclick="sortTable(7)">Unit</th>
+                <th onclick="sortTable(8)">Quantity</th>
+            </tr>
+        </thead>
+        <tbody id="chemicalBody">
+           
+        </tbody> 
+    </table>
+   <!-- Pagination Controls -->
+<div id="pagination" class="pagination-controls">
+    <!-- <button onclick="">Previous </button><button>next</button> -->
+</div>
+
+      <!-- Popup form -->
+      <div id="editPopup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Edit Chemical</h2>
+            <form id="editForm">
+                <div class="liOne">
+                <label for="editId">ID:</label><br>
+                <input type="text" id="editId" name="id" readonly><br></div><div class="liOne">
+                <label for="editName">Chemical Name:</label><br>
+                <input type="text" id="editName" name="name"><br>
+            </div>
+            <div class="liOne">
+                <label for="editVendor">Vendor:</label><br>
+                <input type="text" id="editVendor" name="vendor"><br>
+            </div><div class="liOne">
+                <label for="editDensity">Density:</label><br>
+                <input type="text" id="editDensity" name="density"></div>
+                <div class="liOne">
+                <label for="editViscosity">Viscosity:</label><br>
+                <input type="text" id="editViscosity" name="viscosity"><br></div> <div class="liOne">
+                <label for="editPackaging">Packaging:</label><br>
+                <input type="text" id="editPackaging" name="packaging"></div> <div class="liOne">
+                <label for="editPackSize">Pack Size:</label><br>
+                <input type="text" id="editPackSize" name="packSize"><br></div> <div class="liOne">
+                <label for="editUnit">Unit:</label><br>
+                <input type="text" id="editUnit" name="unit"><br>
+            </div><div class="liOne">
+                <label for="editQuantity">Quantity:</label><br>
+                <input type="text" id="editQuantity" name="quantity"></div>
+                <div class="liOne">
+                <button type="button" onclick="saveEdit()">Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./home.js"></script>
+</body>
+</html>
+<!-- <div class="table">
+    <div class="table-row header">
+        <div class="table-cell">ID</div>
+        <div class="table-cell">Chemical Name</div>
+        <div class="table-cell">Vendor</div>
+        <div class="table-cell">Density</div>
+        <div class="table-cell">Viscosity</div>
+        <div class="table-cell">Packaging</div>
+        <div class="table-cell">Pack Size</div>
+        <div class="table-cell">Unit</div>
+        <div class="table-cell">Quantity</div>
+    </div>
+    <div class="table-row" >
+  
+        <div class="table-cell"    id="add" ></div>
+        <div class="table-cell" >1</div>
+        <div class="table-cell">Chemical A</div>
+        <div class="table-cell">Vendor X</div>
+        <div class="table-cell">1.2 g/cm³</div>
+        <div class="table-cell">10 mPa·s</div>
+        <div class="table-cell">Bottle</div>
+        <div class="table-cell">500 ml</div>
+        <div class="table-cell">Liters</div>
+        <div class="table-cell">20</div> -->
+    <!-- </div> -->
+    <!-- Add more rows as needed -->
+<!-- </div> -->
