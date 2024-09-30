@@ -83,10 +83,98 @@ var chemicals =[
         "Packsize": "250.00",
         "Unit": "kg",
         "Quantity": "8749.54"
+    }, {
+        "id": 8,
+        "Chemicalname": "Ammonium Persulfate",
+        "Vender": "LG Chem",
+        "Density": "3525.92",
+        "Viscosity": "60.63",
+        "Packaging": "Bag",
+        "Packsize": "100.00",
+        "Unit": "kg",
+        "Quantity": "6495.18"
+    },
+    {
+        "id": 9,
+        "Chemicalname": "Caustic Potash",
+        "Vender": "Formosa",
+        "Density": "3172.15",
+        "Viscosity": "48.22",
+        "Packaging": "Bag",
+        "Packsize": "180.00",
+        "Unit": "kg",
+        "Quantity": "8751.90"
+    },
+    {
+        "id": 10,
+        "Chemicalname": "Dimethylaminopropylamino",
+        "Vender": "LG Chem",
+        "Density": "8435.37",
+        "Viscosity": "12.62",
+        "Packaging": "Barrel",
+        "Packsize": "75.00",
+        "Unit": "L",
+        "Quantity": "5964.61"
+    },
+    {
+        "id": 11,
+        "Chemicalname": "Mono Ammonium Phosphate",
+        "Vender": "Sinopec",
+        "Density": "1597.65",
+        "Viscosity": "76.51",
+        "Packaging": "Bag",
+        "Packsize": "105.00",
+        "Unit": "kg",
+        "Quantity": "8183.73"
+    },
+    {
+        "id": 12,
+        "Chemicalname": "Ferric Nitrate",
+        "Vender": "DowDuPont",
+        "Density": "364.04",
+        "Viscosity": "14.90",
+        "Packaging": "Bag",
+        "Packsize": "105.00",
+        "Unit": "kg",
+        "Quantity": "4154.33"
+    },
+    {
+        "id": 13,
+        "Chemicalname": "n-Pentane",
+        "Vender": "Sinopec",
+        "Density": "4535.26",
+        "Viscosity": "66.76",
+        "Packaging": "N/A",
+        "Packsize": "N/A",
+        "Unit": "t",
+        "Quantity": "6272.34"
+    },
+    {
+        "id": 14,
+        "Chemicalname": "Glycol Ether PM",
+        "Vender": "LG Chem",
+        "Density": "6495.18",
+        "Viscosity": "72.12",
+        "Packaging": "Bag",
+        "Packsize": "250.00",
+        "Unit": "kg",
+        "Quantity": "8749.54"
+    },  {
+        "id": 15,
+        "Chemicalname": "Ferric Nitrate",
+        "Vender": "DowDuPont",
+        "Density": "364.04",
+        "Viscosity": "14.90",
+        "Packaging": "Bag",
+        "Packsize": "105.00",
+        "Unit": "kg",
+        "Quantity": "4154.33"
     }
 ]
 var i=0;
 var arrSelectId=[];
+var arrCur=chemicals;
+//arrCur.push(chemicals);
 // function tableData(chemicals){
 // // var tr=document.createElement("tr");
 // var a=document.getElementById("chemicalBody");
@@ -107,8 +195,10 @@ function addRow() {
     cell.innerHTML = '<i id="${chemicals[key].id}" onclick="selectForDelete(event)"  style="color:#ddd;cursor:pointer;" class="fa-solid fa-check"></i>';
     for (let i = 0; i < 9; i++) {
          cell = newRow.insertCell();
-       
-            console.log("in"+i);
+       if(i==0)
+        cell.innerHTML = `<input type="text" id="in${i}" placeholder="" value=${arrCur.length+1}>`;
+            //console.log("in"+i);
+            else
         cell.innerHTML = `<input type="text" id="in${i}" placeholder="">`;
         
     }
@@ -120,22 +210,13 @@ function deleteRow() {
     var b="tr".concat(i);
     const table = document.getElementById("chemicalBody");
     const table1 = document.getElementById(b);
-   // const table = document.getElementById(b);
-
-    // // for (const key in arrSelectId) {
-    //     console.log(arrSelectId[key]);
-    //     var id1=arrSelectId[key];
-    //     console.log(table.rows.id);
-    //     if (a>0) 
-    //     id1=  arrSelectId[key]-a;  
-        var j=3;
-        console.log(b);
+   
     //     if(i!=0)
     //  table1.deleteRow(i-1); 
     
         table1.remove(); 
-
-     //table.remove();
+//arrCur.remove(i-1);
+     
      arrSelectId= arrSelectId.slice(0,1);
   //  }
   console.log(arrSelectId.toString());
@@ -197,6 +278,8 @@ console.log(updatedChemical);
     // Close the popup
     closePopup();
     i=0;
+    arrCur[i-1]=updatedChemical
+    
 }
 console.log(i-1);
 // Function to close the popup
@@ -206,11 +289,14 @@ function closePopup() {
 }
 function saveNewRow(newChemical1) {
     chemicals.push(newChemical1);
-    console.log(newChemical1);
+   // console.log(newChemical1);
     renderTable(chemicals);
-
+   // arrCur.push(newChemical1);
 }
-
+function refresh() {
+   // console.log(arrCur);
+    renderTable(arrCur);
+}
 function moveRowUp() {
     const table = document.getElementById('chemicalTable');
     // console.log(i);
@@ -296,6 +382,7 @@ const rowsPerPage = 5; // Limit to 5 rows per page
 
 // Function to render the table with pagination
 function renderTable(data) {
+    console.log(data);
     const tableBody = document.getElementById('chemicalBody');
     tableBody.innerHTML = ''; // Clear existing rows
 
